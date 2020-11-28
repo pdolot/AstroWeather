@@ -1,26 +1,26 @@
 package com.example.astroweather.view.fragment.home;
 
 import android.content.res.Configuration;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
-import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.astroweather.R;
+import com.example.astroweather.model.NavigationData;
 import com.example.astroweather.view.base.BaseFragment;
+import com.example.astroweather.view.component.Navigation;
 
 public class Home extends BaseFragment {
 
@@ -42,7 +42,9 @@ public class Home extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewSwapperAdapter.setPages(((HomeViewModel) viewModel).getPages());
+        NavigationData navigationData = navigation.getNavigationData();
+        ((HomeViewModel) viewModel).getData(navigationData);
+        topBar.setLatLng(navigationData.getLatitude(), navigationData.getLongitude());
     }
 
     @Override
@@ -55,9 +57,9 @@ public class Home extends BaseFragment {
         snapHelper = new LinearSnapHelper();
         viewSwapperAdapter = new ViewSwapperAdapter();
 
-        if (getResources().getBoolean(R.bool.isTablet)){
+        if (getResources().getBoolean(R.bool.isTablet)) {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        }else{
+        } else {
             switch (getResources().getConfiguration().orientation) {
                 case Configuration.ORIENTATION_PORTRAIT:
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
@@ -73,7 +75,19 @@ public class Home extends BaseFragment {
 
     @Override
     public void setListeners() {
+        ((HomeViewModel) viewModel).currentTime.observe(getViewLifecycleOwner(), s -> {
+            topBar.setCurrentTime(s);
+        });
 
+        ((HomeViewModel) viewModel).pages.observe(getViewLifecycleOwner(), pages -> {
+            viewSwapperAdapter.setPages(pages);
+        });
+
+        navigation.setNavigationListener(navigationData -> {
+            topBar.setLatLng(navigationData.getLatitude(), navigationData.getLongitude());
+            drawerLayout.closeDrawer(GravityCompat.START, true);
+            ((HomeViewModel) viewModel).getData(navigationData);
+        });
     }
 
 }

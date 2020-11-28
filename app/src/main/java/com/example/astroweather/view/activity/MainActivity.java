@@ -7,12 +7,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 
 import com.example.astroweather.R;
+import com.example.astroweather.view.component.Navigation;
 import com.example.astroweather.view.component.TopBar;
 
 public class MainActivity extends AppCompatActivity implements BaseComponents {
 
     private TopBar topBar;
     private DrawerLayout drawerLayout;
+    private Navigation sideMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements BaseComponents {
     private void findViews(){
         topBar = findViewById(R.id.topBar);
         drawerLayout = findViewById(R.id.drawerLayout);
+        sideMenu = findViewById(R.id.navigation);
     }
 
     private void setListeners(){
@@ -42,5 +45,10 @@ public class MainActivity extends AppCompatActivity implements BaseComponents {
     @Override
     public DrawerLayout getDrawerLayout() {
         return drawerLayout;
+    }
+
+    @Override
+    public Navigation getSideMenu() {
+        return sideMenu;
     }
 }
