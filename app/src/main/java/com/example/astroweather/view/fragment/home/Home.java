@@ -55,13 +55,17 @@ public class Home extends BaseFragment {
         snapHelper = new LinearSnapHelper();
         viewSwapperAdapter = new ViewSwapperAdapter();
 
-        switch (getResources().getConfiguration().orientation) {
-            case Configuration.ORIENTATION_PORTRAIT:
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-                break;
-            case Configuration.ORIENTATION_LANDSCAPE:
-                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-                break;
+        if (getResources().getBoolean(R.bool.isTablet)){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        }else{
+            switch (getResources().getConfiguration().orientation) {
+                case Configuration.ORIENTATION_PORTRAIT:
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+                    break;
+                case Configuration.ORIENTATION_LANDSCAPE:
+                    recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                    break;
+            }
         }
         recyclerView.setAdapter(viewSwapperAdapter);
         snapHelper.attachToRecyclerView(recyclerView);
