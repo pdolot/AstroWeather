@@ -11,4 +11,6 @@
     <color name="primaryDark">#004c8c</color>
     <color name="primary">#0277bd</color>
     <color name="iconColor">#e1f5fe</color>
+    <color name="textColor">#e1f5fe</color>
+    <color name="hintColor">#90CAF9</color>
 </resources>

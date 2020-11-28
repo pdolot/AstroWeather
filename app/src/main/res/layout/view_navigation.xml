@@ -1,27 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/primary"
     android:padding="8dp">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <ImageView
+        android:id="@+id/navigation_locationIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/iconColor" />
+
+    <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Lokalizacja"
+        android:textColor="@color/iconColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/navigation_locationIcon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:boxBackgroundColor="#2196F3"
-        style="@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded"
-        android:hint="Szerokość geograficzna">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="dsad">
+        app:layout_constraintStart_toEndOf="@id/navigation_locationIcon"
+        app:layout_constraintTop_toTopOf="@id/navigation_locationIcon" />
 
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/navigation_latitudeLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Szerokość geograficzna"
+        android:textColor="@color/iconColor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_locationIcon" />
+
+    <EditText
+        android:id="@+id/navigation_latitude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_background"
+        android:fontFamily="sans-serif-light"
+        android:hint="np. 51.777224437636676"
+        android:inputType="numberDecimal"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hintColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/navigation_latitudeLabel"
+        app:layout_constraintTop_toBottomOf="@id/navigation_latitudeLabel" />
+
+    <TextView
+        android:id="@+id/navigation_longitudeLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Długość geograficzna"
+        android:textColor="@color/iconColor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_latitude" />
+
+    <EditText
+        android:id="@+id/navigation_longitude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_background"
+        android:fontFamily="sans-serif-light"
+        android:hint="np. 19.458628202635143"
+        android:inputType="numberDecimal"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hintColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/navigation_longitudeLabel"
+        app:layout_constraintTop_toBottomOf="@id/navigation_longitudeLabel" />
+
+    <ImageView
+        android:id="@+id/navigation_syncIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_sync"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_longitude"
+        app:tint="@color/iconColor" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Synchronizacja"
+        android:textColor="@color/iconColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/navigation_syncIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/navigation_syncIcon"
+        app:layout_constraintTop_toTopOf="@id/navigation_syncIcon" />
+
+    <TextView
+        android:id="@+id/navigation_syncLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Częstotliwość odświeżania danych"
+        android:textColor="@color/iconColor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_syncIcon" />
+
+    <SeekBar
+        android:id="@+id/navigation_sync"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/hintColor"
+        android:layout_marginTop="8dp"
+        android:progress="0"
+        android:max="11"
+        android:progressTint="@color/white"
+        android:thumbTint="@color/iconColor"
+        android:thumb="@drawable/seek_bar_thumb"
+        app:layout_constraintEnd_toStartOf="@id/navigation_syncTime"
+        app:layout_constraintStart_toStartOf="@id/navigation_syncLabel"
+        app:layout_constraintTop_toBottomOf="@id/navigation_syncLabel" />
+
+    <TextView
+        android:id="@+id/navigation_syncTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_background"
+        android:fontFamily="sans-serif-light"
+        android:text="5 min"
+        android:paddingTop="6dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hintColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/navigation_sync"
+        app:layout_constraintTop_toTopOf="@id/navigation_sync" />
+
+    <Button
+        android:id="@+id/navigation_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zapisz"
+        android:textColor="@color/primaryDark"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/navigation_sync"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
