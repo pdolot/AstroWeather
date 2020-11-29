@@ -26,22 +26,6 @@ abstract public class BaseFragment extends Fragment implements BaseActions{
     abstract public Class<? extends ViewModel> getViewModelClass();
 
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        try {
-            baseComponents = (BaseComponents) getContext();
-        } catch (Exception e) {
-            throw new IllegalStateException("Main activity must implement base interface");
-        }
-
-        if (baseComponents != null){
-            topBar = baseComponents.getTopBar();
-            drawerLayout = baseComponents.getDrawerLayout();
-            navigation = baseComponents.getSideMenu();
-        }
-    }
-
-    @Override
     public void onDetach() {
         topBar = null;
         drawerLayout = null;
@@ -57,6 +41,17 @@ abstract public class BaseFragment extends Fragment implements BaseActions{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        try {
+            baseComponents = (BaseComponents) getContext();
+        } catch (Exception e) {
+            throw new IllegalStateException("Main activity must implement base interface");
+        }
+
+        if (baseComponents != null){
+            topBar = baseComponents.getTopBar();
+            drawerLayout = baseComponents.getDrawerLayout();
+            navigation = baseComponents.getSideMenu();
+        }
         findViews(view);
         setListeners();
     }
