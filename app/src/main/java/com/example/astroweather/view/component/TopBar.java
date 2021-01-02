@@ -14,12 +14,7 @@ import com.example.astroweather.R;
 import com.example.astroweather.view.base.BaseActions;
 
 public class TopBar extends ConstraintLayout implements BaseActions {
-
-    private ImageView sideMenu;
-    private TopBarListener topBarListener;
-    private TextView currentTime;
-    private TextView latitude;
-    private TextView longitude;
+    private TextView title;
 
     public TopBar(@NonNull Context context) {
         super(context);
@@ -52,35 +47,14 @@ public class TopBar extends ConstraintLayout implements BaseActions {
 
     @Override
     public void findViews(View view) {
-        sideMenu = view.findViewById(R.id.sideMenu);
-        currentTime = view.findViewById(R.id.topBar_currentTime);
-        latitude = view.findViewById(R.id.topBar_latitude);
-        longitude = view.findViewById(R.id.topBar_longitude);
+        title = view.findViewById(R.id.title);
     }
 
     @Override
     public void setListeners() {
-        sideMenu.setOnClickListener(view -> {
-            if (topBarListener != null){
-                topBarListener.onSideMenuClickListener();
-            }
-        });
     }
 
-    public void setTopBarListener(TopBarListener topBarListener) {
-        this.topBarListener = topBarListener;
-    }
-
-    public interface TopBarListener{
-        void onSideMenuClickListener();
-    }
-
-    public void setCurrentTime(String time){
-        currentTime.setText(time);
-    }
-
-    public void setLatLng(String lat, String lng){
-        latitude.setText(lat);
-        longitude.setText(lng);
+    public void setTitle(String title){
+        this.title.setText(title);
     }
 }

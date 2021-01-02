@@ -9,7 +9,7 @@ public class BaseViewModel extends ViewModel {
     public CompositeDisposable rxDisposer = new CompositeDisposable();
 
     @Override
-    protected void onCleared() {
+    public void onCleared() {
         super.onCleared();
         rxDisposer.dispose();
         rxDisposer = null;

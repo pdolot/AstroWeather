@@ -2,10 +2,20 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/home">
+    app:startDestination="@id/weatherFragment">
 
     <fragment
-        android:id="@+id/home"
-        android:name="com.example.astroweather.view.fragment.home.Home"
-        android:label="Home" />
+        android:id="@+id/astronomyFragment"
+        android:name="com.example.astroweather.view.fragment.astronomy.AstronomyFragment"
+        android:label="AstronomyFragment" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.astroweather.view.fragment.menu.MenuFragment"
+        android:label="MenuFragment" />
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.astroweather.view.fragment.weather.WeatherFragment"
+        android:label="WeatherFragment" />
+
+
 </navigation>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/navigation_locationIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/iconColor" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Lokalizacja"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/navigation_locationIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/navigation_locationIcon"
+            app:layout_constraintTop_toTopOf="@id/navigation_locationIcon" />
+
+        <TextView
+            android:id="@+id/navigation_latitudeLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Szerokość geograficzna"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_locationIcon" />
+
+        <EditText
+            android:id="@+id/navigation_latitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_background"
+            android:digits="-0123456789."
+            android:fontFamily="sans-serif-light"
+            android:hint="np. 51.777224437636676"
+            android:inputType="number"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/navigation_latitudeLabel"
+            app:layout_constraintTop_toBottomOf="@id/navigation_latitudeLabel" />
+
+        <TextView
+            android:id="@+id/navigation_longitudeLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Długość geograficzna"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_latitude" />
+
+        <EditText
+            android:id="@+id/navigation_longitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="sans-serif-light"
+            android:hint="np. 19.458628202635143"
+            android:inputType="numberDecimal"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/navigation_longitudeLabel"
+            app:layout_constraintTop_toBottomOf="@id/navigation_longitudeLabel" />
+
+        <ImageView
+            android:id="@+id/navigation_syncIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_sync"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_longitude"
+            app:tint="@color/iconColor" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Synchronizacja"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/navigation_syncIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/navigation_syncIcon"
+            app:layout_constraintTop_toTopOf="@id/navigation_syncIcon" />
+
+        <TextView
+            android:id="@+id/navigation_syncLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Częstotliwość odświeżania danych"
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_syncIcon" />
+
+        <SeekBar
+            android:id="@+id/navigation_sync"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:max="11"
+            android:progress="0"
+            android:progressTint="@color/iconColor"
+            android:textColorHint="@color/hintColor"
+            android:thumb="@drawable/seek_bar_thumb"
+            android:thumbTint="@color/iconColor"
+            app:layout_constraintEnd_toStartOf="@id/navigation_syncTime"
+            app:layout_constraintStart_toStartOf="@id/navigation_syncLabel"
+            app:layout_constraintTop_toBottomOf="@id/navigation_syncLabel" />
+
+        <TextView
+            android:id="@+id/navigation_syncTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="sans-serif-light"
+            android:paddingTop="6dp"
+            android:text="5 min"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            app:layout_constraintBottom_toBottomOf="@id/navigation_sync"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/navigation_sync" />
+
+        <ImageView
+            android:id="@+id/navigation_unitsIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_filter"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_sync"
+            app:tint="@color/iconColor" />
+
+        <TextView
+            android:id="@+id/navigation_unitsLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Jednostki"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/navigation_unitsIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/navigation_unitsIcon"
+            app:layout_constraintTop_toTopOf="@id/navigation_unitsIcon" />
+
+        <RadioGroup
+            android:id="@+id/navigation_units"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/navigation_unitsLabel"
+            app:layout_constraintTop_toBottomOf="@id/navigation_unitsIcon">
+
+            <RadioButton
+                android:id="@+id/navigation_unitsMetric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/metric"
+                android:textColor="@color/textColor" />
+
+            <RadioButton
+                android:id="@+id/navigation_unitsStandard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/standard"
+                android:textColor="@color/textColor" />
+
+            <RadioButton
+                android:id="@+id/navigation_unitsImperial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/imperial"
+                android:textColor="@color/textColor" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/navigation_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary"
+            android:text="Zapisz"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_units" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AstroWeather</string>
     <string name="sync_time">"%1$d min"</string>
+    <string name="lat">Szerokość geograficzna:\n\t\t%1$.5f</string>
+    <string name="lng">Długość geograficzna:\n\t\t%1$.5f</string>
+    <string name="standard">Standardowe (m/s, K)</string>
+    <string name="metric">Metryczne (m/s, °C)</string>
+    <string name="imperial">Imperialne (mile/s, °F)</string>
 </resources>

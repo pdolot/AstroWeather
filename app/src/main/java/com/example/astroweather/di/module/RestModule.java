@@ -1,16 +1,17 @@
 package com.example.astroweather.di.module;
 
-import com.example.astroweather.rest.RestRepository;
-import com.example.astroweather.rest.RestService;
+import com.example.astroweather.rest.astronomy.AstronomyRestRepository;
+import com.example.astroweather.rest.astronomy.AstronomyRetrofit;
+import com.example.astroweather.rest.astronomy.AstronomyRestService;
+import com.example.astroweather.rest.weather.WeatherRestRepository;
+import com.example.astroweather.rest.weather.WeatherRestService;
+import com.example.astroweather.rest.weather.WeatherRetrofit;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class RestModule {
@@ -24,24 +25,37 @@ public class RestModule {
 
     @Provides
     @Singleton
-    public Retrofit provideRetrofit(OkHttpClient okHttpClient) {
-        return new Retrofit.Builder()
-                .baseUrl("https://api.ipgeolocation.io/")
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    public AstronomyRetrofit provideAstronomyRetrofit(OkHttpClient okHttpClient) {
+        return new AstronomyRetrofit(okHttpClient);
     }
 
     @Provides
     @Singleton
-    public RestService provideRestService(Retrofit retrofit){
-        return retrofit.create(RestService.class);
+    public AstronomyRestService provideAstronomyRestService(AstronomyRetrofit astronomyRetrofit){
+        return astronomyRetrofit.getRetrofit().create(AstronomyRestService.class);
     }
 
     @Provides
     @Singleton
-    public RestRepository provideRestRepository(RestService restService){
-        return new RestRepository(restService);
+    public AstronomyRestRepository provideAstronomyRestRepository(AstronomyRestService astronomyRestService){
+        return new AstronomyRestRepository(astronomyRestService);
+    }
+
+    @Provides
+    @Singleton
+    public WeatherRetrofit provideWeatherRetrofit(OkHttpClient okHttpClient) {
+        return new WeatherRetrofit(okHttpClient);
+    }
+
+    @Provides
+    @Singleton
+    public WeatherRestService provideWeatherRestService(WeatherRetrofit weatherRetrofit){
+        return weatherRetrofit.getRetrofit().create(WeatherRestService.class);
+    }
+
+    @Provides
+    @Singleton
+    public WeatherRestRepository provideWeatherRestRepository(WeatherRestService weatherRestService){
+        return new WeatherRestRepository(weatherRestService);
     }
 }
